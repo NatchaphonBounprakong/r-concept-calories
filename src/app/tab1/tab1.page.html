@@ -1,78 +1,47 @@
 <ion-content [fullscreen]="true">
-  <div *ngIf="isLoading" style="width: 100%;height: 100%;display: flex;flex-direction: column; justify-content: center;align-items: center;">
-    <ion-spinner name="dots"></ion-spinner>
-    <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    <p>กำลังคำนวณด้วย AI</p>
-    <p>{{loadingText}}</p>
-    <p>{{loadingNumText}}</p>
 
-  </div>
-  <ion-grid [hidden]="isLoading">
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-button id="notification-button" size="mini" (click)="presentPopover()">
+      <span style="color: white;font-weight: bold;">{{appService.selectedMenus.length}}</span>
+      <!-- <ion-icon name="ellipsis-horizontal-outline">
+      </ion-icon> -->
+    </ion-button>
+  </ion-fab>
+  <ion-item>
+    <!-- <ion-badge id="notifications-badge" color="danger">5</ion-badge> -->
+    <ion-label position="stacked">ใส่ชื่อ เมนู</ion-label>
+    <ion-input placeholder="เช่น ข้าวขาหมู, ก๋วยเตี๋ยว" (keyup)="onChangeFilter()" [(ngModel)]="filter"></ion-input>
+  </ion-item>
+  <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>ประจำงวด</ion-card-title>
-            <ion-item style="margin-top: 10px;" color="light">
-              <!-- <ion-label>งวด</ion-label> -->
-              <ion-select interface="popover" [(ngModel)]="selected" (ionChange)="changeDate($event)">
-                <ion-select-option *ngFor="let item of round" [value]="item.value">
-                  {{item.day}} {{item.thmonth}} {{item.year+543}}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
+      <ion-col size="6" size-sm> ชื่อ</ion-col>
+      <ion-col style="text-align: right;"> ปริมาณ </ion-col>
+      <ion-col> แคลอรี่ </ion-col>
+      <ion-col style="justify-content: center;"> เพิ่ม </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-            <ion-card-title>เลขเด่น</ion-card-title>
-          </ion-card-header>
-          <ion-card-content style="font-weight: bold;display: flex;justify-content: center;padding-top: 13px;">
-            <div style="font-size: 40px;">
-              {{solitary}} , {{under1}} , {{under2}}
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-            <ion-card-title>ชุด 3 ตัว</ion-card-title>
-          </ion-card-header>
-          <ion-card-content style="font-weight: bold;">
-            <div style="font-size: 32px;">
-              <b *ngFor="let item of three;let last = last">
-                {{item}} <span *ngIf="!last">,</span>
-              </b>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-            <ion-card-title>ชุด 2 ตัว</ion-card-title>
-          </ion-card-header>
-          <ion-card-content style="font-weight: bold;">
-            <div style="font-size: 32px;">
-              <b *ngFor="let item of two; let last = last">
-                {{item}} <span *ngIf="!last">,</span>
-              </b>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  </ion-grid>
+  <ion-grid style="height: calc(100vh - 155px);overflow: auto;">
+    <ng-container *ngFor="let item of filteredMenus;let index=index">
+      <ion-row *ngIf="index%2==0" style="background-color: #95D1CC;">
+        <ion-col size="6" size-sm style="text-align: left;font-weight: bold;"> {{item.name}} </ion-col>
+        <ion-col style="text-align: left;"> {{item.unit}} </ion-col>
+        <ion-col style="text-align: right;"> {{item.cal}} </ion-col>
+        <ion-col>
+          <ion-button color="light" (click)="onAddMenus(item)">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="index%2==1" style="background-color: #F6F2D4;">
+        <ion-col size="6" size-sm style="text-align: left;font-weight: bold;"> {{item.name}} </ion-col>
+        <ion-col style="text-align: left;"> {{item.unit}} </ion-col>
+        <ion-col style="text-align: right;"> {{item.cal}} </ion-col>
+        <ion-col>
+          <ion-button color="light" (click)="onAddMenus(item)">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-container>
   </ion-grid>
 </ion-content>

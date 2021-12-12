@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.rconcept.lottery.ai" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>หวยแม่นๆ สุ่มหวยด้วยระบบ AI</name>
-    <description>หวยแม่นๆ สุ่มหวยด้วย AI</description>
+<widget id="com.rconcept.calories" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ลดน้ำหนัก ดูแคลอรี่อาหาร</name>
+    <description>ลดน้ำหนัก ดูแคลอรี่อาหาร</description>
     <author email="Natchaphon2140@gmail.com" href="Natchaphon2140@gmail.com">R Concept Team</author>
     <content src="index.html" />
     <access origin="*" />

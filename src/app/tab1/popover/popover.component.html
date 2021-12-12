@@ -1,0 +1,24 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" size-sm> ชื่อ</ion-col>
+    <!-- <ion-col style="text-align: right;"> ปริมาณ </ion-col> -->
+    <ion-col style="text-align: right;"> แคลอรี่ </ion-col>
+  </ion-row>
+  <ng-container *ngFor="let item of appService.selectedMenus;let index=index">
+    <ion-row>
+      <ion-col size="6" size-sm style="text-align: left;font-weight: bold;"> {{item.name}} x {{item.count}} </ion-col>
+      <!-- <ion-col style="text-align: left;"> {{item.unit}} </ion-col> -->
+      <ion-col style="text-align: right;"> {{item.cal*item.count}} </ion-col>
+    </ion-row>
+  </ng-container>
+  <ion-row>
+    <ion-col size="6" size-sm> รวม</ion-col>
+    <!-- <ion-col style="text-align: right;"> ปริมาณ </ion-col> -->
+    <ion-col style="text-align: right;color: cadetblue;font-weight: bold;"> {{sum}} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" (click)="onClear()">ล้าง</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

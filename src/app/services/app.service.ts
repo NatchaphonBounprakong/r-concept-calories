@@ -8,11 +8,12 @@ export class AppService {
   public count: Subject<any> = new Subject<any>()
 
 
-  public listWithNoUnit: any[] = [
-
-  ]
-  public listWithUnit: any[] = [
-
+  selectedMenus = [
+    // {
+    //   name: 'แกงส้มผักกระเฉดปลา',
+    //   unit: '1 ชาม',
+    //   cal: 110
+    // }
   ]
   constructor() { }
 }

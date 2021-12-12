@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     let bannerConfig: AdMobFreeBannerConfig = {
       //isTesting: true, // Remove in production
       autoShow: true,
-      id: "ca-app-pub-3914038868721011/8347392837"
+      id: "ca-app-pub-3914038868721011/5571487382"
     };
     this.admobFree.banner.config(bannerConfig);
     this.admobFree.banner.prepare().then(() => {
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     let interstitialConfig: AdMobFreeInterstitialConfig = {
       //isTesting: true, // Remove in production
       autoShow: true,
-      id: "ca-app-pub-3914038868721011/3095066158"
+      id: "ca-app-pub-3914038868721011/5379915690"
     };
     this.admobFree.interstitial.config(interstitialConfig);
     this.admobFree.interstitial.prepare().then(() => {
